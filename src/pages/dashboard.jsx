@@ -1,53 +1,90 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
-import ResponsiveAppBar from '../components/appbar';
-import Table from '../components/table';
-import { Container } from '@mui/system';
-import { Card, TextField } from '@mui/material';
+import * as React from "react";
+import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
+import ResponsiveAppBar from "../components/appbar";
+import Table from "../components/table";
+import { Container } from "@mui/system";
+import {
+  Card,
+  CardContent,
+  createTheme,
+  CssBaseline,
+  FormControl,
+  TextField,
+} from "@mui/material";
+import { ThemeProvider } from "@emotion/react";
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
 
 export default function Dashboard() {
   return (
-    <Container>
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
-        <Grid item xs={6} md={12}>
-          <ResponsiveAppBar/>
-        </Grid>
-        <Grid item xs={6} md={4}>
-            <Card>
-                <TextField
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      {/* <Container> */}
+      <ResponsiveAppBar />
+      <Grid item xs={12} sx={{ pt: 4 }}>
+        <Grid container justifyContent="space-evenly">
+          <Grid item xs={4}>
+            <Box
+              component="form"
+              sx={{
+                "& > :not(style)": {
+                  m: 1,
+                  width: "25ch",
+                  justifyContent: "space-around",
+                },
+              }}
+              noValidate
+              autoComplete="off"
+            >
+              <TextField
                 required
                 id="standard-required"
                 label="Problem Issue"
-                defaultValue="Problem Issue"
-                variant="standard"
-                />
-                <TextField
+                variant="filled"
+              />
+              <TextField
                 required
-                id="standard-required"
+                multiline
+                id="filled-required"
                 label="Description"
-                //   defaultValue="Issue Description"
-                variant="standard"
-                />
-
-            </Card>
-        </Grid>
-        <Grid item xs={6} md={8}>            
-          <Table/>
+                variant="filled"
+              />
+              <TextField
+                required
+                multiline
+                id="filled-required"
+                label="Description"
+                variant="filled"
+              />
+              <TextField
+                required
+                multiline
+                id="filled-required"
+                label="Description"
+                variant="filled"
+              />
+              <TextField
+                required
+                multiline
+                id="filled-required"
+                label="Description"
+                variant="filled"
+              />
+            </Box>
+          </Grid>
+          <Grid item>
+            <Table />
+          </Grid>
         </Grid>
       </Grid>
-    </Box>
-    </Container>
+      {/* </Container> */}
+    </ThemeProvider>
   );
 }
