@@ -1,19 +1,8 @@
-import * as React from "react";
-import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import ResponsiveAppBar from "../components/appbar";
 import Table from "../components/table";
-import { Container } from "@mui/system";
-import {
-  Card,
-  CardContent,
-  createTheme,
-  CssBaseline,
-  FormControl,
-  TextField,
-} from "@mui/material";
+import { createTheme, CssBaseline, TextField } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 
 const darkTheme = createTheme({
@@ -29,8 +18,8 @@ export default function Dashboard() {
       {/* <Container> */}
       <ResponsiveAppBar />
       <Grid item xs={12} sx={{ pt: 4 }}>
-        <Grid container justifyContent="space-evenly">
-          <Grid item xs={4}>
+        <Grid container justifyContent="center">
+          <Grid item xs={2}>
             <Box
               component="form"
               sx={{
@@ -79,7 +68,7 @@ export default function Dashboard() {
               />
             </Box>
           </Grid>
-          <Grid item>
+          <Grid item xs={8}>
             <Table />
           </Grid>
         </Grid>
