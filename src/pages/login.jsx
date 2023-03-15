@@ -22,23 +22,22 @@ export default function Login() {
     password: "",
   });
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get("email"),
-  //     password: data.get("password"),
-  //   });
-  // };
-
+  let axiosConfig = {
+    withCredentials: true,
+  };
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post(`${process.env.REACT_APP_BASEURL}/users/login`, {
-        email: data.email,
-        password: data.password,
-      })
+      .post(
+        `api/v1/users/login`,
+
+        {
+          email: data.email,
+          password: data.password,
+        },
+        { axiosConfig }
+      )
       .then((res) => {
         console.log(res.data);
         if (res.data.status === "success") {
