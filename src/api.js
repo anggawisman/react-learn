@@ -1,5 +1,10 @@
 import axios from "axios";
 
+export const getMe = async () => {
+    const me = await axios.get(`api/v1/users/me`)
+    return me.data
+}
+
 export const getAllProblems = async () => {
     const problems = await axios.get(`api/v1/problems`)
     // console.log({ problems: problems })
@@ -7,12 +12,8 @@ export const getAllProblems = async () => {
 }
 
 // axios.post(url[, data[, config]])
-export const CreateProblems = async () => {
-    const problems = await axios.post(`${process.env.REACT_APP_BASEURL}/problems`[{
-        "title": "problem test4",
-        "description": "beginilah",
-        "status": "closed",
-        "situation": "normal"
-    }])
-    return problems.data.data.data
+export const createProblems = async (data) => {
+    await axios.post(`api/v1/problems`, data).then((res) => {
+        console.log(res.data);
+    })
 }
