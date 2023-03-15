@@ -46,7 +46,7 @@ export default function Dashboard() {
     situation: "",
     title: "",
     description: "",
-    status: "",
+    status: "open",
   });
 
   const handleChange = (event) => {

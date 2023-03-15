@@ -9,7 +9,6 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Copyright from "../components/copyright";
 import { useNavigate } from "react-router-dom";
-import { Navigate } from "react-router-dom";
 import { Alert, IconButton } from "@mui/material";
 import { Fingerprint } from "@mui/icons-material";
 import axios from "axios";
