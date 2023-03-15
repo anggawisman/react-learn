@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const getAllProblems = async () => {
-    const problems = await axios.get(`${process.env.REACT_APP_BASEURL}/problems`)
+    const problems = await axios.get(`api/v1/problems`)
     // console.log({ problems: problems })
     return problems.data.data.data
 }

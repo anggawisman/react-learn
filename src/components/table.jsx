@@ -12,7 +12,7 @@ import {
 
 export default function Table() {
   const columns = [
-    { field: "id", headerName: "ID", width: 90, hide: true },
+    { field: "id", headerName: "ID", width: 90 },
     {
       field: "customer",
       headerName: "Customer",
@@ -94,9 +94,9 @@ export default function Table() {
 
   const [problems, setProblems] = useState([]);
 
-  const detailsRows = problems.map((row) => {
+  const detailsRows = problems.map((row, idx) => {
     return {
-      id: row._id,
+      id: idx + 1,
       situation: row.situation,
       description: row.description,
       status: row.status,
@@ -122,10 +122,10 @@ export default function Table() {
   return (
     <Box sx={{ height: 400, width: "100%" }}>
       <DataGrid
-        columnVisibilityModel={{
-          // Hide columns id, the other columns will remain visible
-          id: false,
-        }}
+        // columnVisibilityModel={{
+        //   // Hide columns id, the other columns will remain visible
+        //   id: false,
+        // }}
         getRowHeight={() => "auto"}
         component={Paper}
         rows={detailsRows}

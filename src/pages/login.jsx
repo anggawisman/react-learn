@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -10,21 +10,18 @@ import Container from "@mui/material/Container";
 import Copyright from "../components/copyright";
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-import { IconButton } from "@mui/material";
+import { Alert, IconButton } from "@mui/material";
 import { Fingerprint } from "@mui/icons-material";
 import axios from "axios";
 
 // const theme = createTheme();
 
 export default function Login() {
-  const [data, setData] = React.useState({
+  const [data, setData] = useState({
     email: "",
     password: "",
   });
 
-  let axiosConfig = {
-    withCredentials: true,
-  };
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -35,14 +32,18 @@ export default function Login() {
         {
           email: data.email,
           password: data.password,
-        },
-        { axiosConfig }
+        }
       )
       .then((res) => {
         console.log(res.data);
         if (res.data.status === "success") {
+          alert(res.data.status);
           navigate("/dashboard");
         }
+      })
+      .catch((error) => {
+        console.log(error.response.data.message);
+        alert(error.response.data.message);
       });
   };
 
